@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  /* Background */
+  --color-bg: #ffffff;
+  --color-bg-subtle: #f8f9fb;      /* fond sidebar, fond cartes secondaires */
+  --color-bg-sidebar: #fafbfc;     /* fond colonne de navigation gauche */
+
+  /* Text */
+  --color-text-h: #1a1a2e;         /* titres, gros chiffres (Authority Score, etc.) */
+  --color-text: #33334d;           /* texte principal */
+  --color-text-muted: #6b7280;     /* labels, sous-titres ("Trafic organique") */
+  --color-text-subtle: #9ca3af;    /* métadonnées, dates */
+  --color-text-disabled: #d1d5db;
+
+  /* Borders */
+  --color-border: #e5e7eb;
+  --color-border-subtle: #eef0f3;
+
+  /* Primary — violet Semrush (badges "SEO", "Recherche IA", liens actifs sidebar) */
+  --color-primary: #7c3aed;
+  --color-primary-hover: #6d28d9;
+  --color-primary-bg: rgba(124, 58, 237, 0.08);
+  --color-primary-border: rgba(124, 58, 237, 0.25);
+
+  /* Accent — bleu Semrush (liens cliquables, mots-clés) */
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-accent-bg: rgba(37, 99, 235, 0.08);
+
+  /* Success — vert (croissance +13.79%, indicateurs positifs) */
+  --color-success: #16a34a;
+  --color-success-bg: rgba(22, 163, 74, 0.1);
+
+  /* Warning */
+  --color-warning: #f59e0b;
+  --color-warning-bg: rgba(245, 158, 11, 0.1);
+
+  /* Danger — rouge (backlinks en baisse ↓3,7K) */
+  --color-danger: #dc2626;
+  --color-danger-bg: rgba(220, 38, 38, 0.1);
+
+  /* Info — indigo (badge "SEO" en haut à droite du panneau) */
+  --color-info: #6366f1;
+  --color-info-bg: rgba(99, 102, 241, 0.1);
+
+  /* CTA — vert vif (bouton "Commencer l'essai gratuit") */
+  --color-cta: #22c55e;
+  --color-cta-hover: #16a34a;
+
+  /* Fonts */
+  --font-sans: Inter, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-heading: Inter, system-ui, sans-serif;
+  --font-mono: ui-monospace, Consolas, monospace;
+}
+
+:root {
+  font: 18px/145% var(--font-sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  @media (max-width: 1024px) {
+    font-size: 16px;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

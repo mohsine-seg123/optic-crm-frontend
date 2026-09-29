@@ -91,23 +91,24 @@ export default function OrdonnancePage(): React.JSX.Element {
   const validCount = ordonnances.length - expiredCount;
 
 
-  useEffect(() => {
-    const fetchOrdonnances = async () => {
-      try {
-        setLoading(true);
+      const fetchOrdonnances = async () => {
+        try {
+          setLoading(true);
 
-        const data = await getAllOrdonnances();
+          const data = await getAllOrdonnances();
 
-        setOrdonnances(data);
-      } catch (error) {
-        console.error("Erreur chargement ordonnances:", error);
-        setOrdonnances([]);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchOrdonnances();
-  }, []);
+          setOrdonnances(data);
+        } catch (error) {
+          console.error("Erreur chargement ordonnances:", error);
+          setOrdonnances([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      useEffect(() => {
+        void fetchOrdonnances();
+      }, []);
 
   const openDetail = (ordonnance: Ordonnance) => {
     setSelectedOrdonnance(ordonnance);

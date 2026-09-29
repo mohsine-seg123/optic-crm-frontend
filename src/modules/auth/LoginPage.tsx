@@ -6,7 +6,7 @@ import { UseAuth } from "../../context/AuthContext";
 export default function LoginPage(): React.JSX.Element {
   const navigate = useNavigate();
 
-  const { login, loggedUser } = UseAuth();
+  const { login } = UseAuth();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -124,12 +124,12 @@ export default function PaymentModesChart({
                 </Pie>
 
                 <Tooltip
-                  formatter={(value: number, _name, props) => {
-                    const item = props.payload as PaymentModeItem;
+                  formatter={(value, _name, props) => {
+                    const numericValue = Number(value ?? 0);
 
                     return [
-                      `${formatPrice(value)} · ${item.pourcentage}%`,
-                      formatModePaiement(item.modePaiement),
+                      `${numericValue.toFixed(2)} DH`,
+                      props?.payload?.name ?? "",
                     ];
                   }}
                   contentStyle={{

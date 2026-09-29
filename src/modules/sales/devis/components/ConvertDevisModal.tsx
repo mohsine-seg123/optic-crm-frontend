@@ -10,18 +10,16 @@ import {
   X,
 } from "lucide-react";
 
-import type { Devis } from "../devis.types";
+import type { Devis } from "../../../../interfaces/devis.types";
 
-import {
-  convertDevisToVente,
-  type ModePaiement,
-  type VenteFromDevis,
-} from "../../../../services/venteService";
+import { convertDevisToVente } from "../../../../services/venteService";
+
+import type { ModePaiement, Vente } from "../../../../interfaces/vente.types";
 
 type Props = {
   devis: Devis;
   onClose: () => void;
-  onConverted: (vente: VenteFromDevis) => void | Promise<void>;
+  onConverted: (vente: Vente) => void | Promise<void>;
 };
 
 type PaymentOption = {
@@ -77,7 +75,7 @@ export default function ConvertDevisModal({
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const lignes = devis.lignes ?? [];
+  const lignes = useMemo(() => devis.lignes ?? [], [devis.lignes]);
 
   const stockInsuffisant = useMemo(() => {
     return lignes.filter((ligne) => {

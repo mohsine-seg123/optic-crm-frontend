@@ -18,6 +18,7 @@ import VentePage from '../../modules/sales/vente/VentePage';
 import FacturePage from '../../modules/sales/facture/FacturePage';
 import UtilisateurPage from '../../modules/users/UtilisateurPage';
 import OrdonnancePage from '../../modules/optique/ordonnance/OrdonnancePage';
+import Profile from '../../modules/users/Profile';
 
 
 
@@ -50,6 +51,7 @@ function AppRoutes(): JSX.Element {
         <Route path="sales/factures" element={<FacturePage />} />
         <Route path="users" element={ <UtilisateurPage />}/>
         <Route path="optique/ordonnances" element={<OrdonnancePage />} />
+        <Route path="profile" element={<Profile />} />
       </Route>
     </Routes>
   );

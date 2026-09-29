@@ -14,6 +14,7 @@ import type { Client } from "./client.types";
 import DeleteConfirmModal from "../../../components/ui/DeleteConfirmModal";
 import ClientFormModal from "./components/ClientFormModal";
 import ClientDetailModal from "./components/clientDetail";
+import EditClientModal from "./components/EditClientModal";
 
 function getInitials(nom: string, prenom: string): string {
   return `${nom?.[0] ?? ""}${prenom?.[0] ?? ""}`.toUpperCase();
@@ -37,6 +38,7 @@ export default function ClientPage(): React.JSX.Element {
   const [formOpen, setFormOpen] = useState(false);
   const [clientdetailopen, setClientDetailopen] = useState(false);
   const [clientID, setClientID] = useState<number | null>(null);
+  const [editClient, setEditClient] = useState<Client | null>(null);
   
 
 
@@ -245,7 +247,10 @@ export default function ClientPage(): React.JSX.Element {
                       <div className="flex items-center justify-center gap-1">
                         <button
                           title="Voir"
-                          onClick={()=>{setClientDetailopen(true); setClientID(client.id);}}
+                          onClick={() => {
+                            setClientDetailopen(true);
+                            setClientID(client.id);
+                          }}
                           className="rounded-lg p-2 text-text-muted transition hover:bg-primary-bg hover:text-primary"
                         >
                           <Eye size={17} />
@@ -253,6 +258,7 @@ export default function ClientPage(): React.JSX.Element {
 
                         <button
                           title="Modifier"
+                          onClick={() => setEditClient(client)}
                           className="rounded-lg p-2 text-text-muted transition hover:bg-warning-bg hover:text-warning"
                         >
                           <Edit size={17} />
@@ -275,14 +281,12 @@ export default function ClientPage(): React.JSX.Element {
         </div>
       </div>
 
-
       {clientdetailopen && (
         <ClientDetailModal
           clientID={clientID}
           onClose={() => setClientDetailopen(false)}
         />
       )}
-
 
       {deleteTarget && (
         <DeleteConfirmModal
@@ -299,6 +303,20 @@ export default function ClientPage(): React.JSX.Element {
           onClose={() => setFormOpen(false)}
           onCreated={(client) => {
             setClients((prev) => [client, ...prev]);
+          }}
+        />
+      )}
+
+      {editClient && (
+        <EditClientModal
+          client={editClient}
+          onClose={() => setEditClient(null)}
+          onUpdated={(updatedClient) => {
+            setClients((prev) =>
+              prev.map((client) =>
+                client.id === updatedClient.id ? updatedClient : client,
+              ),
+            );
           }}
         />
       )}

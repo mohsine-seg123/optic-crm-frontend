@@ -2,7 +2,24 @@ import axios from "../api/axios";
 import type { Utilisateur } from "../interfaces/Utilisateur";
 import type { UpdateUtilisateurDto,CreateUtilisateurDto } from "../interfaces/utilisateur.types";
 
+export type User = {
+  id: number;
+  nom: string;
+  prenom: string;
+  email: string;
+  role: "admin" | "vendeur";
+};
 
+export type UpdateMeData = {
+  nom: string;
+  prenom: string;
+  email: string;
+};
+
+export type ChangePasswordData = {
+  ancienMotDePasse: string;
+  nouveauMotDePasse: string;
+};
 
 const login=(email:string,motDePasse:string)=>{
     return axios.post("/auth/login",{email,motDePasse})
@@ -61,6 +78,13 @@ const removeUtilisateur = async (id: number): Promise<void> => {
   await axios.delete(`/utilisateurs/${id}`);
 };
 
+export const updateMe = (data: UpdateMeData) => {
+  return axios.patch<User>("/auth/me", data);
+};
 
+// Modifier le mot de passe
+export const changePassword = (data: ChangePasswordData) => {
+  return axios.patch("/auth/change-password", data);
+};
 
 export {login,logout,getMe,getAllUtilisateurs,getUtilisateurById,createUtilisateur,updateUtilisateur,removeUtilisateur}

@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { Bell, User, Settings, LogOut, Search, Calendar } from "lucide-react";
+import { Bell, User,LogOut, Search, Calendar } from "lucide-react";
 import { UseAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function Navbar(): React.JSX.Element {
   const { user, logout } = UseAuth();
@@ -163,7 +164,7 @@ export default function Navbar(): React.JSX.Element {
                 </div>
                 <div className="min-w-0">
                   <p className="text-sm font-semibold text-text-h truncate">
-                    {user?.name}
+                    {user?.nom}
                   </p>
                   <p className="text-xs text-text-muted truncate">
                     {user?.email}
@@ -172,15 +173,13 @@ export default function Navbar(): React.JSX.Element {
               </div>
 
               <div className="py-1">
-                <button className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-text hover:bg-bg-subtle transition-colors">
-                  <User size={16} className="text-text-muted" />
-                  Mon profil
-                </button>
-
-                <button className="w-full flex items-center gap-2.5 px-4 py-2.5 text-sm text-text hover:bg-bg-subtle transition-colors">
-                  <Settings size={16} className="text-text-muted" />
-                  Paramètres
-                </button>
+                <Link
+  to="/profile"
+  className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-text-muted transition hover:bg-primary-bg hover:text-primary"
+>
+  <User size={18} />
+  Mon profil
+</Link>
               </div>
 
               <div className="h-px bg-border" />

@@ -41,11 +41,12 @@ export default function RevenueChart({ data }: Props): React.JSX.Element {
             />
 
             <Tooltip
-              formatter={(value: number) => [
-                `${value.toLocaleString("fr-FR")} DH`,
+              formatter={(value) => [
+                typeof value === "number"
+                  ? `${value.toLocaleString("fr-FR")} DH`
+                  : "—",
                 "CA",
               ]}
-              labelFormatter={(label) => `Mois : ${label}`}
             />
 
             <Area

@@ -193,7 +193,7 @@ export default function VentePage(): React.JSX.Element {
     setFactureOpen(true);
   };
 
-  const handleFactureCreated = async (facture: Facture) => {
+  const handleFactureCreated = async (_facture: Facture) => {
     setFactureOpen(false);
     setVenteForFacture(null);
 

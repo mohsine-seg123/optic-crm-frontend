@@ -1,6 +1,9 @@
 import axios from "../api/axios";
-import type { Utilisateur } from "../interfaces/Utilisateur";
-import type { UpdateUtilisateurDto,CreateUtilisateurDto } from "../interfaces/utilisateur.types";
+import type {
+  Utilisateur,
+  CreateUtilisateurDto,
+  UpdateUtilisateurDto,
+} from "../interfaces/utilisateur.types";
 
 export type User = {
   id: number;

@@ -1,6 +1,6 @@
 import { Barcode, CalendarDays, Package, Phone, Truck, X } from "lucide-react";
 
-import type { BonLivraison } from "../../../interfaces/bonLivraison.types";
+import type { BonLivraison } from "../../../../interfaces/bonLivraison.types";
 
 type Props = {
   bon: BonLivraison;

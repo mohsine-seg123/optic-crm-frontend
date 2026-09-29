@@ -68,12 +68,8 @@ export default function ProduitPage(): React.JSX.Element {
     return produits.filter(isLowStock).length;
   }, [produits]);
 
-  const totalValue = useMemo(() => {
-    return produits.reduce((sum, produit) => {
-      return sum + Number(produit.prixVente || 0) * produit.stockActuel;
-    }, 0);
-  }, [produits]);
 
+ 
   const fetchProduits = async () => {
     try {
       setLoading(true);

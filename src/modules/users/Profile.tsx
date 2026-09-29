@@ -9,7 +9,6 @@ import {
   EyeOff,
   CheckCircle,
   AlertCircle,
-  CalendarDays,
 } from "lucide-react";
 
 import { UseAuth } from "../../context/AuthContext";
